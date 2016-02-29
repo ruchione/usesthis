@@ -1,5 +1,5 @@
 ---
-name: Colin Gourlay
+title: Colin Gourlay
 summary: Interactive story developer (ABC News, Australia)
 categories:
 - data
@@ -12,7 +12,7 @@ categories:
 
 I'm [Colin Gourlay](http://colin-gourlay.com/ "Colin's website."), and I'm a developer at [ABC News](http://www.abc.net.au/news/ "The Australian news website."), tasked with using code to help them tell stories in new and interesting ways. I originally joined the ABC as a developer, working on the front-end of their CMS and building a few data-driven interfaces for last year's Australian federal election coverage. At the start of this year, I was chosen to join a new team that focused entirely on digital storytelling, interactive content and data journalism. Every week has a new angle and new challenges, and I'm thoroughly enjoying working alongside journalists and creatives that strive to advance the art of storytelling on the web.
 
-If I'm not working, I'll either be reading, making music, playing board/card games or hacking on silly throwaway [side](http://js13kgames.com/entries/tile-score "Colin's tile-swapping web-based game.") [projects](http://namethatblue.com/ "Colin's blue-branded guessing game."). I also (occasionally) do a bit of speaking about data visualisation and JavaScript.
+If I'm not working, I'll either be reading, making music, playing board/card games or hacking on silly throwaway [side](http://js13kgames.com/entries/tile-score "Colin's tile-swapping web-based game.") [projects](http://namethatblue.com/ "Colin's blue-branded guessing game."). I also (occasionally) do a bit of speaking about data visualisation and [JavaScript][].
 
 I'm collypops on [Twitter](http://twitter.com/collypops "Colin's Twitter account.") and colingourlay on [GitHub](http://github.com/colingourlay "Colin's GithHub account.").
 
@@ -54,4 +54,4 @@ For music production, I use [Ableton Live][live], which has a live performance m
 
 #### What would be your dream setup?
 
-To be honest, I have nearly everything I want in a setup already, but if I could perfect it, I'd encourage Apple to release their Retina 5K display as a standalone monitor, and get two of them. I'd also really like to own a phone with Apple's build quality and design sensibility, but running Android. On the software side, I'm craving a way to collaborate on datasets in the same way we collaborate on code with git; I'm keeping a close eye on the [Dat][] project, as it's showing great promise.
+To be honest, I have nearly everything I want in a setup already, but if I could perfect it, I'd encourage Apple to release their Retina 5K display as a standalone monitor, and get two of them. I'd also really like to own a phone with Apple's build quality and design sensibility, but running Android. On the software side, I'm craving a way to collaborate on datasets in the same way we collaborate on code with git; I'm keeping a close eye on the Dat project, as it's showing great promise.

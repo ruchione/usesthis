@@ -1,5 +1,5 @@
 ---
-name: Nick Bradbury
+title: Nick Bradbury
 summary: Software developer (FeedDemon, Glassboard)
 categories:
 - developer
@@ -11,7 +11,7 @@ categories:
 
 I'm [Nick Bradbury](http://nick.typepad.com/ "Nick's website.") and I'm a software developer. I started my career as a cartoonist, but switched to programming after random chance proved it kept a roof over my head more reliably than cartoons did.
 
-I created [HomeSite][], [TopStyle][] and [FeedDemon][] for Windows, then switched to Android development a few years ago and created the Android versions of [Glassboard][glassboard-android] and [NewsGator Social Sites][social-sites-android].
+I created [HomeSite][], [TopStyle][] and [FeedDemon][] for Windows, then switched to Android development a few years ago and created the Android versions of Glassboard and [NewsGator Social Sites][social-sites-android].
 
 #### What hardware do you use?
 
@@ -25,7 +25,7 @@ My closet is full of the skeletal remains of all the Windows systems I used over
 
 Far too many programs to mention! The desktop software I rely on the most is [Eclipse][], [Google Chrome][chrome], [1Password][], [Parallels][parallels-desktop], [Dropbox][], [MacHG][], [SourceTree][], [Acorn][], [Skype][], [ColorSchemer Studio][colorschemer-studio], [Balsamiq Mockups][mockups], and Delphi (when I'm running Windows).
 
-On my phone, I use [Glassboard][glassboard-ios] an awful lot, not just because I helped create it but also because it's so useful for private group conversations. I have a board with my co-workers and another with my family that I post to several times a day.
+On my phone, I use Glassboard an awful lot, not just because I helped create it but also because it's so useful for private group conversations. I have a board with my co-workers and another with my family that I post to several times a day.
 
 Before I had kids I was an avid gamer with a love for Quake-style games. I dropped that addiction because once I became a dad, something had to go.
 

@@ -1,5 +1,5 @@
 ---
-name: Phil Hagelberg
+title: Phil Hagelberg
 summary: Hacker-errant (Heroku)
 categories:
 - developer
@@ -18,7 +18,7 @@ I'm [Phil Hagelberg](http://technomancy.us/colophon "Phil's colophon."). I'm cur
 
 I use a [ThinkPad X200s][thinkpad-x200], which is about as light a machine (1.1 kg) as you can get and still have a comfortable full-size keyboard. I prioritize mobility since I work from [coffee](http://zokacoffee.com/ "A coffee shop in Seattle that Phil works out of.") [shops](http://neptunecoffee.com/ "A coffee shop in Seattle that Phil works out of.") [around](http://trabantcoffee.com/ "A coffee shop in Seattle that Phil works out of.") [Seattle](http://www.milsteadandco.com/ "A coffee shop in Seattle that Phil works out of.") about every other day. My laptop has held up really well despite being over 2 years old. I was eying the new X220 series but just couldn't justify ditching this one. I would probably still be on my ThinkPad X60 from 2007, but my habit of [working outdoors during the summer](http://www.flickr.com/photos/technomancy/tags/remoteoffice "Phil's photos of his remote office.") makes the LED backlight a must. I do miss the excitement you used to get when buying a new machine; these days (post-SSD) new purchases are more often about adjusting to a new set of compromises than getting something objectively better.
 
-I used to have a server at home that hosted my IRC client as well as SSH sessions for pair programming. Since joining Heroku I've moved to [an IRC bouncer][znc] hosted on Heroku. I don't pair as much as I used to, but I've started using [pair.io][], a service for spinning up ephemeral collaborative programming nodes. It's also hosted on Heroku. I used to feel like running your own home server was necessary as a nerd merit badge kind of thing, but now I'm just glad to be rid of the hassle as long as I can still control the software wherever it's being run.
+I used to have a server at home that hosted my IRC client as well as SSH sessions for pair programming. Since joining Heroku I've moved to [an IRC bouncer][znc] hosted on Heroku. I don't pair as much as I used to, but I've started using pair.io, a service for spinning up ephemeral collaborative programming nodes. It's also hosted on Heroku. I used to feel like running your own home server was necessary as a nerd merit badge kind of thing, but now I'm just glad to be rid of the hassle as long as I can still control the software wherever it's being run.
 
 #### And what software?
 
@@ -26,7 +26,7 @@ I do as much as I can in [GNU Emacs][emacs] since it pains me to use monolithic 
 
 So apart from using Emacs for obvious stuff like [programming][swank-clojure], [version control][magit], [note taking][org-mode], [email][gnus], [shells][eshell], [IM][elim], and [IRC][erc], I also have put together interfaces for things like [presentations][epresent], [pastebinning][scpaste], and [database interaction][relax.el].
 
-There are still a few things that aren't feasible to be implemented in Emacs Lisp yet, but [Conkeror][] lets me maintain the runtime-modifiable paradigm in the browser. It does this by being implemented in Javascript and providing a rich system of dotfiles, [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "A Wikipedia entry for Read–eval–print loop."), and hooks.
+There are still a few things that aren't feasible to be implemented in Emacs Lisp yet, but [Conkeror][] lets me maintain the runtime-modifiable paradigm in the browser. It does this by being implemented in [JavaScript][] and providing a rich system of dotfiles, [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "A Wikipedia entry for Read–eval–print loop."), and hooks.
 
 For work I use Leiningen a lot. A lot of people get confused when working with Clojure because Clojure itself is just a library rather than an application, and they expect to interact directly with it. Leiningen is that application that you interact with directly. I won't say much more about it because it's pretty straightforward except to note that it has an interactive mode as well as a way to extend it using the same mechanism that was used to write it in the first place.
 

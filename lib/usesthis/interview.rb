@@ -1,6 +1,5 @@
 module UsesThis
   class Interview < Dimples::Post
-    
     attr_accessor :hardware
     attr_accessor :software
 
@@ -37,25 +36,16 @@ module UsesThis
       @contents.scan(/\[([^\[\(\)]+)\]\[([a-z0-9\.\-]+)?\]/).each do |link|
         slug = (link[1] ? link[1] : link[0].downcase)
 
-        if @site.hardware[slug]
-          @hardware[slug] ||= @site.hardware[slug]
-          @site.hardware[slug].interviews << self
-        elsif @site.software[slug]
-          @software[slug] ||= @site.software[slug]
-          @site.software[slug].interviews << self
-        end
+        @hardware[slug] ||= @site.hardware[slug] if @site.hardware[slug]
+        @software[slug] ||= @site.software[slug] if @site.software[slug]
       end
-    end
-
-    def output_file_path(parent_path)
-      File.join(parent_path, @slug, "#{@filename}.#{@extension}")
     end
 
     def to_h
       output = {
         slug: @slug,
-        name: @name,
-        url: "http://#{@slug}.usesthis.com/",
+        name: @title,
+        url: "http://usesthis.com/interviews/#{@slug}/",
         summary: @summary,
         date: @date.to_i,
         categories: @categories,
@@ -64,22 +54,17 @@ module UsesThis
       output[:credits] = @credits if @credits
       output[:contents] = @contents
 
-      has_hardware = @hardware.length > 0
-      has_software = @software.length > 0
+      output[:gear] = {
+        hardware: [],
+        software: []
+      }
 
-      if has_hardware || has_software
-        output[:gear] = {}
+      %w{hardware software}.each do |type|
+        self.send(type).each do |slug, ware|
+          ware_hash = ware.to_h
+          ware_hash.delete(:interviews)
 
-        output[:gear][:hardware] = [] if has_hardware
-        output[:gear][:software] = [] if has_software
-
-        %w{hardware software}.each do |type|
-          self.send(type).each do |slug, ware|
-            ware_hash = ware.to_h
-            ware_hash.delete(:interviews)
-
-            output[:gear][type.to_sym] << ware_hash
-          end
+          output[:gear][type.to_sym] << ware_hash
         end
       end
 

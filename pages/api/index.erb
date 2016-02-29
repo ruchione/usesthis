@@ -9,19 +9,23 @@ title: API
 
   <h4>Methods</h4>
 
+  <h5>Interviews</h5>
   <ul>
-    <li><a href="/api/#interviews" title="Grab a list of all the interviews.">Interviews: Getting a list</a></li>
-    <li><a href="/api/#interview" title="Grab a single interview.">Interviews: Getting an interview</a></li>
-    <li><a href="/api/#interview-categories" title="Grab a list of interview categories.">Interviews: Getting categories</a></li>
-    <li><a href="/api/#interview-category" title="Grab a list of interviews by category.">Interviews: Getting a category</a></li>
-    <li><a href="/api/#hardware" title="Grab a list of all the hardware.">Hardware: Getting a list</a></li>
-    <li><a href="/api/#hardware-item" title="Grab a single piece of hardware.">Hardware: Getting an item</a></li>
-    <li><a href="/api/#software" title="Grab a list of all the software.">Software: Getting a list</a></li>
-    <li><a href="/api/#software-item" title="Grab a single piece of software.">Software: Getting an item</a></li>
-    <li><a href="/api/#changelog" title="See how this silly API has evolved over time.">Changelog</a></li>
+    <li><a href="#interviews-list" title="Request a list of all the interviews as JSON.">Getting a list</a></li>
+    <li><a href="#interviews-interview" title="Request a given interview as JSON.">Getting an interview</a></li>
+    <li><a href="#interviews-categories" title="Request a list of all the interview categories as JSON.">Getting categories</a></li>
+    <li><a href="#interviews-category" title="Request a list of a category's interviews as JSON.">Getting a category</a></li>
   </ul>
 
-  <h5 id="interviews">Interviews: Getting a list</h5>
+  <h5>Gear</h5>
+  <ul>
+    <li><a href="#gear-list" title="Request a list of all the hardware or software as JSON.">Getting a list</a></li>
+    <li><a href="#gear-item" title="Request a given piece of hardware or software as JSON.">Getting an item</a></li>
+  </ul>
+
+  <h4 id="interviews">Interviews</h4>
+
+  <h5 id="interviews-list">Getting a list</h5>
   <p class="summary">This method returns a basic list of all the interviews.</p>
   <p>
     Requesting (GET):<br>
@@ -34,7 +38,7 @@ title: API
     {
       "slug": "fizban.the.fabulous",
       "name": "Fizban the Fabulous",
-      "url": "http://fizban.the.fabulous.usesthis.com/",
+      "url": "http://usesthis.com/interviews/fizban.the.fabulous/",
       "summary": "Wizard",
       "date": 1425970800,
       "categories": [
@@ -45,7 +49,7 @@ title: API
     {
       "slug": "tasslehoff.burrfoot",
       "name": "Tasslehoff Burrfoot",
-      "url": "http://tasslehoff.burrfoot.usesthis.com/",
+      "url": "http://usesthis.com/interviews/tasslehoff.burrfoot/",
       "summary": "Borrower",
       "date": 1425542400,
       "categories": [
@@ -56,11 +60,11 @@ title: API
   ]
 }</pre>
 
-  <h5 id="interview">Interviews: Getting an interview</h5>
+  <h5 id="interviews-interview">Getting an interview</h5>
   <p class="summary">This method returns a complete interview for the given slug, including gear.</p>
   <p>
     Requesting (GET):<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/interviews/<%= @site.latest_post.slug %>" title="Request a given interview as JSON.">/api/v<%= UsesThis::API::VERSION %>/interviews/<strong><em>slug</em></strong></a></code>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/interviews/<%= @site.latest_post.slug %>" title="Request a given interview as JSON.">/api/v<%= UsesThis::API::VERSION %>/interviews/{slug}</a></code>
   </p>
   <p>Will give you:</p>
   <pre>
@@ -68,7 +72,7 @@ title: API
   "interview": {
     "slug": "tasslehoff.burrfoot",
     "name": "Tasslehoff Burrfoot",
-    "url": "http://tasslehoff.burrfoot.usesthis.com/",
+    "url": "http://usesthis.com/interviews/tasslehoff.burrfoot/",
     "summary": "Borrower",
     "date": 1425542400,
     "categories": [
@@ -97,11 +101,11 @@ title: API
   }
 }</pre>
 
-  <h5 id="interview-categories">Interviews: Getting categories</h5>
+  <h5 id="interviews-categories">Getting categories</h5>
   <p class="summary">This method returns a basic list of all the interview categories.</p>
   <p>
     Requesting (GET):<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/interviews/categories" title="Request a list of all the interview categories as JSON.">/api/v<%= UsesThis::API::VERSION %>/interviews/categories</a></code>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/categories" title="Request a list of all the interview categories as JSON.">/api/v<%= UsesThis::API::VERSION %>/categories</a></code>
   </p>
   <p>Will give you:</p>
   <pre>
@@ -114,11 +118,11 @@ title: API
   ]
 }</pre>
 
-  <h5 id="interview-category">Interviews: Getting a category</h5>
+  <h5 id="interviews-category">Getting a category</h5>
   <p class="summary">This method returns a basic list of all the interviews for the given category.</p>
   <p>
     Requesting (GET):<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/interviews/categories/mac" title="Request a list of a category's interviews as JSON.">/api/v<%= UsesThis::API::VERSION %>/interviews/categories/<strong><em>slug</em></strong></a></code>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/categories/mac" title="Request a list of a category's interviews as JSON.">/api/v<%= UsesThis::API::VERSION %>/categories/{slug}</a></code>
   </p>
   <p>Will give you:</p>
   <pre>
@@ -127,7 +131,7 @@ title: API
     {
       "slug": "fizban.the.fabulous",
       "name": "Fizban the Fabulous",
-      "url": "http://fizban.the.fabulous.usesthis.com/",
+      "url": "http://usesthis.com/interviews/fizban.the.fabulous/",
       "summary": "Wizard",
       "date": 1425970800,
       "categories": [
@@ -138,11 +142,14 @@ title: API
   ]
 }</pre>
 
-  <h5 id="hardware">Hardware: Getting a list</h5>
-  <p class="summary">This method returns a basic list of all the hardware mentioned on the site.</p>
+  <h4 id="gear">Gear</h4>
+
+  <h5 id="gear-list">Getting a list</h5>
+  <p class="summary">This method returns a basic list of all the hardware or software mentioned on the site. Note that these will be <em>quite large</em>.</p>
   <p>
     Requesting (GET):<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/hardware" title="Request a list of all the hardware as JSON.">/api/v<%= UsesThis::API::VERSION %>/hardware</a></code>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/hardware" title="Request a list of all the hardware as JSON.">/api/v<%= UsesThis::API::VERSION %>/hardware</a></code><br>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/software" title="Request a list of all the software as JSON.">/api/v<%= UsesThis::API::VERSION %>/software</a></code>
   </p>
   <p>Will give you:</p>
   <pre>
@@ -155,11 +162,12 @@ title: API
   ]
 }</pre>
 
-  <h5 id="hardware-item">Hardware: Getting an item</h5>
-  <p class="summary">This method returns a piece of hardware for the given slug, including related interviews.</p>
+  <h5 id="gear-item">Getting an item</h5>
+  <p class="summary">This method returns a single piece of hardware or software for the given slug, including related interviews.</p>
   <p>
     Requesting (GET):<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/hardware/macbook-pro" title="Request a given piece of hardware as JSON.">/api/v<%= UsesThis::API::VERSION %>/hardware/<strong><em>slug</em></strong></a></code>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/hardware/macbook-pro" title="Request a given piece of hardware as JSON.">/api/v<%= UsesThis::API::VERSION %>/hardware/{slug}</a></code><br>
+    <code><a href="/api/v<%= UsesThis::API::VERSION %>/software/photoshop" title="Request a given piece of software as JSON.">/api/v<%= UsesThis::API::VERSION %>/software/{slug}</a></code>
   </p>
   <p>Will give you:</p>
   <pre>
@@ -178,50 +186,12 @@ title: API
   }
 }</pre>
 
-  <h5 id="software">Software: Getting a list</h5>
-  <p class="summary">This method returns a basic list of all the software mentioned on the site.</p>
-  <p>
-    Requesting:<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/software" title="Request a list of all the software as JSON.">/api/v<%= UsesThis::API::VERSION %>/software</a></code>
-  </p>
-  <p>Will give you:</p>
-  <pre>
-{
-  "gear": [
-    {
-      "slug": "wanderlust",
-      "name": "Wanderlust"
-    }
-  ]
-}</pre>
-
-  <h5 id="software-item">Software: Getting an item</h5>
-  <p class="summary">This method returns a piece of software for the given slug, including related interviews.</p>
-  <p>
-    Requesting:<br>
-    <code><a href="/api/v<%= UsesThis::API::VERSION %>/software/photoshop" title="Request a given piece of software as JSON.">/api/v<%= UsesThis::API::VERSION %>/software/<strong><em>slug</em></strong></a></code>
-  </p>
-  <p>Will give you:</p>
-  <pre>
-{
-  "gear": {
-    "slug": "wanderlust",
-    "name": "Wanderlust",
-    "description": "A need for travel.",
-    "url": "http://my-kender.net/",
-    "interviews": [
-      {
-        "slug": "tasslehoff.burrfoot",
-        "name": "Tasslehoff Burrfoot",
-      }
-    ]
-  }
-}</pre>
-
-  <h5 id="changelog">Changelog</h5>
+  <h4>Changelog</h4>
 
   <ul>
-    <li><time datetime="2015-15-03">March 15, 2015:</time> Added support for interview categories.</li>
-    <li><time datetime="2015-13-03">March 13, 2015:</time> Initial public launch. Sorry about that.</li>
+    <li><time datetime="2016-02-13">February 13, 2016</time><br>Changed the URLs for the categories API to match the site (but the old ones will keep working forever).</li>
+    <li><time datetime="2015-06-18">June 18, 2015</time><br>Updated interviews to <em>always</em> have a <code>gear</code> element.</li>
+    <li><time datetime="2015-03-15">March 15, 2015</time><br>Added support for interview categories.</li>
+    <li><time datetime="2015-03-13">March 13, 2015</time><br>Initial public launch. Sorry about that.</li>
   </ul>
 </article>

@@ -1,9 +1,10 @@
 ---
-name: Stephen Wolfram
+title: Stephen Wolfram
 summary: Scientist, developer, mathematician
 categories:
 - developer
 - mac
+- mathematician
 - scientist
 - software
 - windows

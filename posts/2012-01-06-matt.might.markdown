@@ -1,5 +1,5 @@
 ---
-name: Matt Might
+title: Matt Might
 summary: CS Professor (University of Utah)
 categories:
 - linux
@@ -56,7 +56,7 @@ My only regret in switching from Linux to OS X is giving up the raw efficiency o
 
 The linode for might.net and my personal cloud runs Ubuntu. Its current uptime is 218 days, and its record uptime exceeds two years.
 
-My iOS devices run many single-purpose, one-off [native-style apps that I roll from HTML, JavaScript and CSS](http://matt.might.net/articles/how-to-native-iphone-ipad-apps-in-javascript/ "Matt's article on his native-style iOS apps."). My top three regular iOS apps are [Spotify][spotify-ios] for music, [Amazon][amazon-mobile-ios] for eliminating errands and [Skype][skype-ios] for calling. ([Skype *is* my home phone](http://matt.might.net/articles/switching-to-skype-to-save-money-on-cell-phone-bills/ "Matt's article on using Skype as his home phone.").)
+My iOS devices run many single-purpose, one-off [native-style apps that I roll from HTML, JavaScript and CSS](http://matt.might.net/articles/how-to-native-iphone-ipad-apps-in-JavaScript/ "Matt's article on his native-style iOS apps."). My top three regular iOS apps are [Spotify][spotify-ios] for music, [Amazon][amazon-mobile-ios] for eliminating errands and [Skype][skype-ios] for calling. ([Skype *is* my home phone](http://matt.might.net/articles/switching-to-skype-to-save-money-on-cell-phone-bills/ "Matt's article on using Skype as his home phone.").)
 
 Most software finds its way onto my systems through [MacPorts][] on OS X and the [apt package management system][apt] for Ubuntu.
 
@@ -66,7 +66,7 @@ I used emacs ([Aquamacs][]) for eleven years for editing text and code. To get a
 
 I spend a lot of the time at the console, so I wrote scripts to [automatically adapt my shell to the tasks I execute most frequently](http://matt.might.net/articles/console-hacks-exploiting-frequency/ "Matt's post on console frequency hacks."). Since I also do a lot of writing and editing, I also wrote [shell scripts that catch bugs in my writing](http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/ "Matt's article on shell scripts for improved writing").
 
-My personal site and blog run off a homebrewed, slowly-evolved collection of shell scripts, Makefiles, HTML, CSS and JavaScript.
+My personal site and blog run off a homebrewed, slowly-evolved collection of shell scripts, Makefiles, HTML, CSS and [JavaScript][].
 
 For creating technical and scientific documents, I use exclusively [LaTeX][], and manage all of my citations with [citeulike][] exporting to [BibTeX][].
 

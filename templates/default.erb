@@ -1,69 +1,80 @@
 <!DOCTYPE html>
 <html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>The Setup / <%= @interview ? @interview.name : @page.title %><% if @pagination && @pagination[:page] > 1 %> (Page <%= @pagination[:page] %>)<% end %></title>
+    <title>The Setup / <%= @this.title %><% if @pagination && @pagination[:page] > 1 %> (Page <%= @pagination[:page] %>)<% end %></title>
     <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css">
     <link href="/feed/" rel="alternate" title="Atom feed" type="application/atom+xml">
-  <% if @interview %>
-    <% if @interview.previous_post %><link rel="prev" href="http://<%= @interview.previous_post.slug %>.usesthis.com/"><% end %>
-    <% if @interview.next_post %><link rel="next" href="http://<%= @interview.next_post.slug %>.usesthis.com/"><% end %>
+  <% if @type == :interview %>
+    <% if @this.previous_post %><link rel="prev" href="https://usesthis.com/interviews/<%= @this.previous_post.slug %>/"><% end %>
+    <% if @this.next_post %><link rel="next" href="https://usesthis.com/interviews/<%= @this.next_post.slug %>/"><% end %>
   <% elsif @pagination && @pagination[:pages] > 1 %>
     <% if @pagination[:previous_page] %><link rel="prev" href="<%= @pagination[:previous_page_url] %>"><% end %>
     <% if @pagination[:next_page] %><link rel="next" href="<%= @pagination[:next_page_url] %>"><% end %>
   <% end %>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="A collection of nerdy interviews asking people from all walks of life what they use to get the job done">
     <meta name="author" content="Daniel Bogan">
-    <meta name="keywords" content="interview, setup<% if @interview %>, <%= @interview.categories.join(', ') %><% end %>">
-  <% if @interview %>
-    <meta name="twitter:card" content="summary" />
+    <meta name="keywords" content="interview, setup<% if @type == :interview %>, <%= @this.categories.join(', ') %><% end %>">
+  <% if @type == :interview %>
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@usesthis" />
-    <meta property="og:title" content="An interview with <%= @interview.name %>" />
-    <meta property="og:type" content="article" />
-    <meta property="og:description" content="<%= @interview.summary %>" />
-    <meta property="og:url" content="http://<%= @interview.slug %>.usesthis.com/" />
-    <meta property="og:image" content="http://usesthis.com/images/portraits/<%= @interview.slug %>.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="500" />
-    <meta property="og:image:height" content="335" />
+    <meta name="twitter:creator" content="@waferbaby" />
+    <meta name="twitter:title" content="The Setup: <%= @this.title %>" />
+    <meta name="twitter:description" content="<%= @this.summary %>" />
+    <meta name="twitter:image" content="https://usesthis.com/images/portraits/<%= @this.slug %>.jpg" />
+    <meta name="twitter:label1" content="Published" />
+    <meta name="twitter:data1" content="<%= @this.date.strftime('%B %-d, %Y') %>" />
   <% end %>
-    <script src="http://stats.usesthis.com/?js" type="text/javascript"></script>
-    <script src="//use.edgefonts.net/source-sans-pro.js"></script>
-    <base href="http://usesthis.com/">
+    <script src="//use.edgefonts.net/lato.js"></script>
+    <script src="/stats/?js" type="text/javascript"></script>
   </head>
   <body>
     <div id="wrapper">
-      <div id="stump">
-        <header id="mast">
-          <h1><a href="/" title="The most recent interviews.">The Setup</a></h1>
-          <h2><%= @interview ? "Interview" : @page.title %></h2>
-          <p id="tagline">What do people use to get stuff done?</p>
-          <nav>
-            <ul>
-              <li><a href="/interviews/" title="All the interviews.">Interviews</a></li>
-              <li><a href="/community/" title="Other interviews by people like you.">Community</a></li>
-              <li><a href="/about/" title="A little info about the site.">About</a></li>
-            </ul>
-          </nav>
-        </header>
-        <aside id="sellout">
-          <script type="text/javascript">
-          //<![CDATA[
-          (function(id) {
-           document.write('<script type="text/javascript" src="' +
-             'http://connect.decknetwork.net/deck' + id + '_js.php?' +
-             (new Date().getTime()) + '"></' + 'script>');
-          })("SU");
-          //]]>
-          </script>
-          <p><em>Ads Via <a href="http://decknetwork.net/" title="The Deck ad network.">The Deck</a></em></p>
-        </aside>
-      </div>
+      <header>
+        <h1><a href="/" title="The most recent interviews.">The Setup</a></h1>
+        <h2><%= @this.title %><% if @pagination && @pagination[:page] > 1 %> (Page <%= @pagination[:page] %>)<% end %></h2>
+        <p id="tagline">What do people use to get stuff done?</p>
+      </header>
+      <nav id="main">
+        <ul>
+          <li><a href="/interviews/" title="All the interviews.">Interviews</a></li>
+          <li><a href="/categories/" title="Interview categories.">Categories</a></li>
+          <li><a href="/community/" title="Other interviews by people like you.">Community</a></li>
+          <li><a href="/about/" title="A little info about the site.">About</a></li>
+        </ul>
+      </nav>
+      <aside id="sidekick">
+        <form id="search" method="get" action="https://duckduckgo.com/">
+          <label>Search the site:
+          <input type="search" name="q" placeholder="MacBook Pro">
+          </label>
+          <input type="hidden" name="sites" value="usesthis.com">
+          <input type="submit" value="Go">
+        </form>
+
+        <p id="support"><strong>Dig the interviews?</strong> You could join <a href="/about#thanks" title="A list of the people who support the site.">these awesome people</a> in supporting nerdy independent publishing <a href="https://www.patreon.com/waferbaby" title="My Patreon account for The Setup.">for as little as $1 a month!</a></p>
+
+        <script type="text/javascript">
+        //<![CDATA[
+        (function(id) {
+         document.write('<script type="text/javascript" src="' +
+           'https://connect.decknetwork.net/deck' + id + '_js.php?' +
+           (new Date().getTime()) + '"></' + 'script>');
+        })("SU");
+        //]]>
+        </script>
+        <p id="deck"><em>Ads Via <a href="http://decknetwork.net/" title="The Deck ad network.">The Deck</a></em></p>
+      </aside>
       <main role="main">
         <%= yield %>
       </main>
-      <footer>This is a <a href="http://waferbaby.com/" title="Some website.">waferbaby</a> snafu. Follow along on <a href="http://twitter.com/usesthis/" title="The @usesthis Twitter account.">Twitter</a>, or subscribe to the <a href="/feed/" title="Subscribe to the Atom feed."> feed</a>. Unless otherwise noted, everything is available via the <a href="http://creativecommons.org/licenses/by-sa/4.0/" title="A Creative Commons license.">Attribution-Share Alike</a> license. Hosting provided by <a href=" https://www.digitalocean.com/?refcode=b59c4de92bdc" title="My lovely hosting provider (with a referral code in the link)." rel="nofollow">DigitalOcean</a>. You're awesome.</footer>
+      <footer>
+        This is a <a href="http://twitter.com/waferbaby" title="Some dude's Twitter account.">waferbaby</a> snafu.
+        Follow along on <a href="http://twitter.com/usesthis/" title="The @usesthis Twitter account.">Twitter</a>, or subscribe to the <a href="/feed/" title="Subscribe to the Atom feed."> feed</a>.
+        There's even <a href="/api/" title="The API.">a very basic API</a>, if you're so inclined.
+        Unless otherwise noted, everything is available via the <a href="http://creativecommons.org/licenses/by-sa/4.0/" title="A Creative Commons license.">Attribution-Share Alike</a> license. ❤️
+      </footer>
     </div>
   </body>
 </html>

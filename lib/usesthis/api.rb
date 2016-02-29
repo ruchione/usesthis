@@ -1,30 +1,19 @@
 module UsesThis
   class API
     VERSION = "1"
+    @site = nil
 
-    attr_accessor :site
-    attr_accessor :path
-
-    def initialize(site)
+    def self.generate(site)
       @site = site
-      @path = File.join(@site.output_paths[:site], 'api', "v#{VERSION}")
-    end
+      output_path = File.join(@site.output_paths[:site], 'api', "v#{VERSION}")
 
-    def generate
-      paths = [
-        'interviews',
-        'hardware',
-        'software',
-        ['interviews', 'categories']
-      ]
-
-      paths.each do |type|
-        FileUtils.mkdir_p(File.join(@path, type))
+      %w[categories interviews hardware software].each do |type|
+        FileUtils.mkdir_p(File.join(output_path, type))
       end
 
-      generate_interviews
-      generate_interview_categories
-      generate_gear
+      generate_interviews(output_path)
+      generate_categories(output_path)
+      generate_gear(output_path)
 
     rescue Dimples::Errors::RenderingError, Dimples::Errors::PublishingError => e
       puts "API error: Failed to generate #{e.file}: #{e.message}"
@@ -32,9 +21,11 @@ module UsesThis
       puts "API error: #{e}"
     end
 
-    def generate_interviews
+    private
+
+    def self.generate_interviews(output_path)
+      path = File.join(output_path, 'interviews')
       interviews = []
-      path = File.join(@path, 'interviews')
 
       @site.posts.each do |interview|
         interview_hash = interview.to_h
@@ -49,14 +40,14 @@ module UsesThis
       generate_json_file(path, 'index', {interviews: interviews})
     end
 
-    def generate_interview_categories
-      categories = []
-      path = File.join(@path, 'interviews', 'categories')
+    def self.generate_categories(output_path)
+      path = File.join(output_path, 'categories')
+      category_slugs = []
 
-      @site.categories.each_key do |category|
+      @site.categories.each do |slug, posts|
         interviews = []
 
-        @site.categories[category].each do |interview|
+        posts.each do |interview|
           interview_hash = interview.to_h
 
           interview_hash.delete(:contents)
@@ -65,18 +56,17 @@ module UsesThis
           interviews << interview_hash
         end
 
-        generate_json_file(path, category, {interviews: interviews})
-
-        categories << category
+        generate_json_file(path, slug, {interviews: interviews})
+        category_slugs << slug
       end
 
-      generate_json_file(path, 'index', {categories: categories.sort!})
+      generate_json_file(path, 'index', {categories: category_slugs.sort!})
     end
 
-    def generate_gear
+    def self.generate_gear(output_path)
       %w{hardware software}.each do |type|
+        path = File.join(output_path, type)
         gear = []
-        path = File.join(@path, type)
 
         @site.send("#{type}").each do |slug, ware|
           ware_hash = ware.to_h
@@ -93,12 +83,12 @@ module UsesThis
       end
     end
 
-    def generate_json_file(path, filename, contents)
+    def self.generate_json_file(path, filename, contents)
       file = @site.page_class.new(@site)
 
       file.filename = filename
       file.extension = 'json'
-      file.contents = Oj.dump(contents)
+      file.contents = Oj.dump(contents, indent: 2)
 
       file.write(path, false)
     end

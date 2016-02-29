@@ -1,16 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    dimples (1.7)
+      tilt (~> 2.0)
     erubis (2.7.0)
-    oj (2.12.1)
-    redcarpet (3.2.2)
-    tilt (2.0.1)
+    mongoose (0.2.5)
+    oj (2.14.6)
+    redcarpet (3.3.4)
+    tilt (2.0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  dimples
   erubis
+  mongoose
   oj
   redcarpet
-  tilt
+
+BUNDLED WITH
+   1.11.2

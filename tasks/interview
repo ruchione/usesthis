@@ -1,33 +1,31 @@
 #!/usr/bin/env ruby
 
-require 'date'
-
 source_path = File.dirname(__dir__)
-
 $:.unshift(source_path)
+
+require 'lib/usesthis'
+require 'date'
 
 abort("You must supply a name for the interviewee.") if ARGV.length < 2
 
 name = ARGV.join(' ')
 slug = name.downcase.gsub(/ /, '.')
 
-date = Time.now.to_date
-found_day = false
+interviews = Dir.glob(File.join(source_path, 'posts', '*.markdown'))
+latest_date = File.basename(interviews.reverse.first).match(/\d{4}-\d{2}-\d{2}/)[0]
+next_date = Date.parse(latest_date).next_day
 
-while !found_day
-  if date.strftime('%a') =~ /Tue|Thu/
-    found_day = true
-  else
-    date = date.next_day
-  end
+loop do
+  break if next_date.strftime('%a') =~ /Tue|Thu/
+  next_date = next_date.next_day
 end
 
-file_path = File.join(source_path, 'posts', "#{date.strftime('%Y-%m-%d')}-#{slug}.markdown")
+file_path = File.join(source_path, 'posts', "#{next_date.strftime('%Y-%m-%d')}-#{slug}.markdown")
 abort("Interview already exists for #{slug}.") if File.exists?(file_path)
 
 output = <<OUTPUT
 ---
-name: #{name}
+title: #{name}
 summary: (summary)
 categories:
 - (category)
@@ -48,4 +46,4 @@ File.open(file_path, 'w') do |file|
   file.write(output)
 end
 
-`open #{file_path}`
+`subl ~/Development/usesthis && subl #{file_path}`

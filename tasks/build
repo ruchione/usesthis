@@ -5,14 +5,13 @@ $:.unshift(source_path)
 
 require 'lib/usesthis'
 
-config = YAML::load_file('./config.yml')
+config = YAML::load_file(File.join(source_path, 'config', 'site.yml'))
 
 site = UsesThis::Site.new(config)
-api = UsesThis::API.new(site)
 
 begin
   site.generate
-  api.generate
+  UsesThis::API.generate(site)
 rescue Exception => e
   puts "Error: #{e}"
 end
